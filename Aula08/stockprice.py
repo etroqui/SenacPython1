@@ -17,6 +17,9 @@ print(v_request)
 from bs4 import BeautifulSoup
 import requests
 from time import sleep
+from os import system
+
+system('cls')
 
 v_url = "https://www.fundamentus.com.br/detalhes.php?papel=CXSE3"
 
@@ -31,11 +34,12 @@ def stock_price(p_url):
     return      d_price
 
 v_price = stock_price(v_url)
-print("\n O valor da Caixa Seguridade no momento é : " + str(v_price),end="")
+print(f"\n O valor da Caixa Seguridade no momento é : {v_price} ", end="")
 
 while True:
     v_new_price = stock_price(v_url)
     if v_new_price != v_price:
-        v_price = stock_price(v_url)
-        print("\r O valor da Caixa Seguridade no momento é : " + str(v_price),end="")
+        #v_price = stock_price(v_url)
+        v_price = v_new_price
+        print(f"\r O valor da Caixa Seguridade no momento é : {v_price} ", end="")
     sleep(1)
