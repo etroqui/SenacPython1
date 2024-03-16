@@ -94,6 +94,8 @@ def getProximaURL(p_ultima_pagina):
     for i in range(1,p_ultima_pagina+1):
         d_url   = f'{v_url_base}?p={i}'
         v_dados = ConsultaSitePagueMenos(d_url)
+        #aqui eu tambem poderia retirar o gravararquivo de dentro de for... e ir adicionando no v_dados conforme abaixo
+        #v_dados = v_dados + ConsultaSitePagueMenos(d_url)
         GravarArquivoXLSX(v_dados,v_arquivo_saida,i)
 
 #Inicia com a pagina 1 da paginacao
