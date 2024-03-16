@@ -44,12 +44,19 @@ def ConsultaSitePagueMenos(p_url):
 
             v_nome_produto = produto.find('h2').text.strip()
 
-            #bool() converte uma expressao para true ou false => if bool(produto.find('strong'):
             if not produto.find('strong'):
                 v_preco_produto = 'Sem Estoque'
             else:
                 #v_preco_produto = produto.find('strong').text.strip()
                 v_preco_produto = produto.find('p',class_='sale-price').text.strip()
+
+            ''' esse codigo aqui ta melhor do que o codigo acima, mas vou deixa-lo comentado
+            como exemplo de uso de bool
+            if bool(item.find('p',class_='sales-price')):
+                v_preco_produto = item.find('p',class_='sales-price').text.strip()
+            else
+                v_preco_produto = "sem estoque"
+            '''
             
             v_preco_produto = v_preco_produto.replace('R$ ','')
 
